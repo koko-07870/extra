@@ -16,11 +16,22 @@ git clone https://github.com/koko-07870/local_manifests --depth 1 -b main .repo/
 rm -rf vendor/derp/signing/keys
 git clone https://github.com/koko-07870/scripts -b tmp vendor/derp/signing/keys
 
+# Some Patches
+rm -rf vendor/support/res/values/attrs.xml
+cd vendor/support/res/values
+wget -O attrs.xml https://raw.githubusercontent.com/koko-07870/scripts/refs/heads/derp/attrs.xml
+cd -
+
+# Updater
+rm -rf packages/apps/Updater/app/src/main/res/values/strings.xml
+cd packages/apps/Updater/app/src/main/res/values
+wget -O strings.xml https://raw.githubusercontent.com/koko-07870/scripts/refs/heads/derp/strings.xml
+cd -
+
 # Export
 export BUILD_USERNAME=koko-07870
 export BUILD_HOSTNAME=crave
 echo "======= Export Done ======"
-
 
 source build/envsetup.sh
 
