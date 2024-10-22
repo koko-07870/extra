@@ -5,7 +5,6 @@ rm -rf device/samsung
 rm -rf vendor/samsung
 rm -rf hardware/samsung
 rm -rf kernel/samsung
-rm -rf vendor/support
 
 repo init -u https://github.com/DerpFest-AOSP/manifest.git -b 15
 
