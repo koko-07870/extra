@@ -19,6 +19,7 @@ git clone https://github.com/koko-07870/local_manifests --depth 1 -b voltage .re
 # keys
 cd vendor/voltage-priv/keys
 ./gen_keys
+cd -
 
 # Some Patches
 rm -rf vendor/voltage/build/soong/Android.bp
