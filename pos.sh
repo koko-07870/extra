@@ -4,7 +4,6 @@ rm -rf .repo/local_manifests
 rm -rf device/samsung
 rm -rf vendor/samsung
 rm -rf hardware/samsung
-rm -rf kernel/samsung
 rm -rf packages/apps/ViPER4AndroidFX
 rm -rf vendor/extra
 
