@@ -1,10 +1,4 @@
 #!/bin/bash
 rm -rf vendor/extra
 git clone https://github.com/koko-07870/vendor_extra -b main vendor/extra
-rm -rf vendor/qcom/opensource/libfmjni/Android.bp
-cd vendor/qcom/opensource/libfmjni
-wget -O Android.bp https://raw.githubusercontent.com/koko-07870/scripts/refs/heads/main/Android.bp
-cd -
-source build/envsetup.sh
-lunch aosp_a52q-ap2a-userdebug
 make CertifiedPropsOverlay
