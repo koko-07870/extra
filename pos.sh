@@ -34,6 +34,10 @@ cd packages/apps/Updates/app/src/main/java/net/pixelos/ota/misc
 wget -O Constants.java https://raw.githubusercontent.com/koko-07870/scripts/refs/heads/pos/Constants.java
 cd -
 
+# temp
+rm -rf packages/apps/FMRadio
+rm -rf vendor/qcom/opensource/libfmjni
+
 # Export
 export BUILD_USERNAME=koko-07870
 export BUILD_HOSTNAME=crave
