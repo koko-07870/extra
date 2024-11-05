@@ -7,6 +7,7 @@ rm -rf hardware/samsung
 rm -rf packages/apps/ViPER4AndroidFX
 rm -rf vendor/extra
 rm -rf kernel/samsung
+rm -rf frameworks/base
 
 repo init -u https://github.com/PixelOS-Fifteen/manifest.git -b fifteen --git-lfs
 
