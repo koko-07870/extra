@@ -18,6 +18,13 @@ git clone https://github.com/koko-07870/local_manifests --depth 1 -b pos .repo/l
 rm -rf vendor/aosp/signing/keys
 git clone https://github.com/koko-07870/scripts -b tmp vendor/aosp/signing/keys
 
+cd vendor/samsung/sm7125-common
+git reset --hard HEAD~3
+cd -
+cd vendor/samsung/a52q
+git reset --hard HEAD^
+cd -
+
 # Export
 export BUILD_USERNAME=koko-07870
 export BUILD_HOSTNAME=crave
