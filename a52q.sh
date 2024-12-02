@@ -3,7 +3,7 @@ function compile()
 {
 source ~/.bashrc && source ~/.profile
 export LC_ALL=C && export USE_CCACHE=1
-ccache -M 25G
+ccache -M 15G
 TANGGAL=$(date +"%Y%m%d-%H")
 export ARCH=arm64
 export KBUILD_BUILD_HOST=linux-build
