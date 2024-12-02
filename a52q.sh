@@ -2,33 +2,18 @@
 function compile()
 {
 source ~/.bashrc && source ~/.profile
-KDIR=$(pwd)
-export KDIR
-export CONFIG=pixelos-a52q_defconfig
-function rgn() {
-	echo -e "\n\e[1;93m[*] Regenerating defconfig! \e[0m"
-        if [ ! -d "${KDIR}/out" ]; then
-        make $CONFIG
-        cp -rf "${KDIR}"/out/.config "${KDIR}"/arch/arm64/configs/vendor/$CONFIG
-        echo -e "\n\e[1;32m[✓] Defconfig regenerated! \e[0m"
-        fi
-	mkdir -p "${KDIR}"/out/{dist,modules,kernel_uapi_headers/usr}
-	make $CONFIG
-	cp -rf "${KDIR}"/out/.config "${KDIR}"/arch/arm64/configs/vendor/$CONFIG
-	echo -e "\n\e[1;32m[✓] Defconfig regenerated! \e[0m"
-}
 export LC_ALL=C && export USE_CCACHE=1
-ccache -M 15G
+ccache -M 25G
 TANGGAL=$(date +"%Y%m%d-%H")
 export ARCH=arm64
 export KBUILD_BUILD_HOST=linux-build
 export KBUILD_BUILD_USER="koko"
 clangbin=clang/bin/clang
-if ! [ -a $clangbin ]; then git clone --depth=1 https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r530567.git clang
+if ! [ -a $clangbin ]; then git clone --depth=1 https://gitlab.com/inferno0230/clang-r487747c.git clang
 fi
-rm -rf anykernel
-make O=out ARCH=arm64 vendor/$CONFIG
-PATH="${KDIR}/clang/bin:${PATH}" \
+rm -rf AnyKernel
+make O=out ARCH=arm64 vendor/pixelos-a52q_defconfig
+PATH="${PWD}/clang/bin:${PATH}" \
 make -j$(nproc --all) O=out \
                       ARCH=arm64 \
                       CC="clang" \
@@ -50,13 +35,12 @@ then
 echo  " Failed To Compile Kernel"
 else
 echo -e " Kernel Compile Successful"
-git clone --depth=1 https://github.com/koko-07870/AnyKernel3.git -b master anykernel
-cp out/arch/arm64/boot/Image.gz anykernel
-cd anykernel
-zip -r9 Spark-2.0-a52q-${TANGGAL}.zip *
+git clone --depth=1 https://github.com/koko-07870/AnyKernel3.git AnyKernel
+cp out/arch/arm64/boot/Image.gz AnyKernel
+cd AnyKernel
+zip -r9 Spark-2.0-A15-${TANGGAL}.zip *
 cd ../
 fi
 }
 compile
-rgn
 zupload
