@@ -11,7 +11,7 @@ export KBUILD_BUILD_USER="koko"
 clangbin=clang/bin/clang
 if ! [ -a $clangbin ]; then git clone --depth=1 https://gitlab.com/inferno0230/clang-r487747c.git clang
 fi
-rm -rf AnyKernel
+rm -rf anykernel
 make O=out ARCH=arm64 vendor/pixelos-a52q_defconfig
 PATH="${PWD}/clang/bin:${PATH}" \
 make -j$(nproc --all) O=out \
@@ -35,10 +35,10 @@ then
 echo  " Failed To Compile Kernel"
 else
 echo -e " Kernel Compile Successful"
-git clone --depth=1 https://github.com/koko-07870/AnyKernel3.git AnyKernel
-cp out/arch/arm64/boot/Image.gz AnyKernel
-cd AnyKernel
-zip -r9 Spark-2.0-A15-${TANGGAL}.zip *
+git clone --depth=1 https://github.com/koko-07870/AnyKernel3.git -b master anykernel
+cp out/arch/arm64/boot/Image.gz anykernel
+cd anykernel
+zip -r9 Spark-2.0-a52q-${TANGGAL}.zip *
 cd ../
 fi
 }
