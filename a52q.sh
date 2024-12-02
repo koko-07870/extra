@@ -8,18 +8,6 @@ export KDIR
 
 # defconfig
 export CONFIG=pixelos-a52q_defconfig
-
-export LC_ALL=C && export USE_CCACHE=1
-ccache -M 15G
-TANGGAL=$(date +"%Y%m%d-%H")
-export ARCH=arm64
-export KBUILD_BUILD_HOST=linux-build
-export KBUILD_BUILD_USER="koko"
-clangbin=clang/bin/clang
-if ! [ -a $clangbin ]; then git clone --depth=1 https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r530567.git clang
-fi
-rm -rf anykernel
-
 # A function to regenerate defconfig.
 rgn() {
 	echo -e "\n\e[1;93m[*] Regenerating defconfig! \e[0m"
@@ -33,6 +21,17 @@ rgn() {
 	cp -rf "${KDIR}"/out/.config "${KDIR}"/arch/arm64/configs/vendor/$CONFIG
 	echo -e "\n\e[1;32m[✓] Defconfig regenerated! \e[0m"
 }
+
+export LC_ALL=C && export USE_CCACHE=1
+ccache -M 15G
+TANGGAL=$(date +"%Y%m%d-%H")
+export ARCH=arm64
+export KBUILD_BUILD_HOST=linux-build
+export KBUILD_BUILD_USER="koko"
+clangbin=clang/bin/clang
+if ! [ -a $clangbin ]; then git clone --depth=1 https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r530567.git clang
+fi
+rm -rf anykernel
 
 # start building
 make O=out ARCH=arm64 vendor/$CONFIG
