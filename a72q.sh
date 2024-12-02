@@ -9,7 +9,11 @@ export ARCH=arm64
 export KBUILD_BUILD_HOST=linux-build
 export KBUILD_BUILD_USER="koko"
 clangbin=clang/bin/clang
-if ! [ -a $clangbin ]; then git clone --depth=1 https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r530567.git clang
+if ! [ -a $clangbin ]; then
+wget -O toolchain.tar.gz https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/main/clang-r530567.tar.gz
+mkdir -p ${PWD}/clang
+tar -xzf toolchain.tar.gz -C ${PWD}/clang
+rm -rf toolchain.tar.gz
 fi
 rm -rf anykernel
 make O=out ARCH=arm64 vendor/pixelos-a72q_defconfig
