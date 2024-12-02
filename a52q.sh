@@ -3,13 +3,13 @@ function compile()
 {
 source ~/.bashrc && source ~/.profile
 export LC_ALL=C && export USE_CCACHE=1
-ccache -M 15G
+ccache -M 20G
 TANGGAL=$(date +"%Y%m%d-%H")
 export ARCH=arm64
 export KBUILD_BUILD_HOST=linux-build
 export KBUILD_BUILD_USER="koko"
 clangbin=clang/bin/clang
-if ! [ -a $clangbin ]; then git clone --depth=1 https://gitlab.com/inferno0230/clang-r487747c.git clang
+if ! [ -a $clangbin ]; then git clone --depth=1 https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r530567.git clang
 fi
 rm -rf anykernel
 make O=out ARCH=arm64 vendor/pixelos-a52q_defconfig
