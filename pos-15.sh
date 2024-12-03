@@ -8,14 +8,14 @@ rm -rf packages/apps/ViPER4AndroidFX
 rm -rf vendor/extra
 rm -rf kernel/samsung
 
-repo init -u https://github.com/PixelOS-Fifteen/manifest.git -b fifteen --git-lfs
+repo init -u https://github.com/GenesisOS/manifest.git -b verve --git-lfs
 
 git clone https://github.com/koko-07870/local_manifests --depth 1 -b pos .repo/local_manifests
 
 # sync
 /opt/crave/resync.sh
 
-rm -rf vendor/aosp/signing/keys
+rm -rf vendor/genesis/signing/keys
 git clone https://github.com/koko-07870/extra -b tmp vendor/aosp/signing/keys
 
 # Export
@@ -25,4 +25,4 @@ echo "------ Export Done ------"
 
 source build/envsetup.sh
 
-lunch aosp_a52q-ap3a-userdebug && make installclean && mka bacon -j$(nproc --all)
+breakfast a52q && make installclean && mka genesis -j$(nproc --all)
