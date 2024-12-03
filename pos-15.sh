@@ -16,7 +16,7 @@ git clone https://github.com/koko-07870/local_manifests --depth 1 -b genesis .re
 /opt/crave/resync.sh
 
 rm -rf vendor/genesis/signing/keys
-git clone https://github.com/koko-07870/extra -b tmp vendor/aosp/signing/keys
+git clone https://github.com/koko-07870/extra -b tmp vendor/genesis/signing/keys
 
 # Export
 export BUILD_USERNAME=koko-07870
