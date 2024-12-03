@@ -10,7 +10,7 @@ rm -rf kernel/samsung
 
 repo init -u https://github.com/GenesisOS/manifest.git -b verve --git-lfs
 
-git clone https://github.com/koko-07870/local_manifests --depth 1 -b pos .repo/local_manifests
+git clone https://github.com/koko-07870/local_manifests --depth 1 -b genesis .repo/local_manifests
 
 # sync
 /opt/crave/resync.sh
