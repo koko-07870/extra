@@ -1,12 +1,28 @@
 #!/bin/bash
+
+rm -rf .repo/local_manifests
+rm -rf device/samsung
+rm -rf vendor/samsung
+rm -rf hardware/samsung
+rm -rf packages/apps/ViPER4AndroidFX
 rm -rf vendor/extra
-git clone https://github.com/koko-07870/vendor_extra -b main vendor/extra
-rm -rf device/samsung/sm7125-common/common.mk
-cd device/samsung/sm7125-common
-wget -O common.mk https://raw.githubusercontent.com/koko-07870/device_samsung_sm7125-common/refs/heads/fourteen/common.mk
-cd -
-rm -rf packages/apps/FMRadio
-rm -rf vendor/qcom/opensource/libfmjni
-. build/envsetup.sh
-lunch aosp_a52q-ap2a-userdebug
-make CertifiedPropsOverlay
+rm -rf kernel/samsung
+
+repo init -u https://github.com/PixelOS-Fifteen/manifest.git -b fifteen --git-lfs
+
+git clone https://github.com/koko-07870/local_manifests --depth 1 -b pos-a52 .repo/local_manifests
+
+# sync
+/opt/crave/resync.sh
+
+rm -rf vendor/aosp/signing/keys
+git clone https://github.com/koko-07870/extra -b tmp vendor/aosp/signing/keys
+
+# Export
+export BUILD_USERNAME=koko-07870
+export BUILD_HOSTNAME=crave
+echo "------ Export Done ------"
+
+source build/envsetup.sh
+
+breakfast a52q && make CertifiedPropsOverlay
