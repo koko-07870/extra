@@ -25,4 +25,6 @@ echo "------ Export Done ------"
 
 source build/envsetup.sh
 
-breakfast a52q && make installclean && m yaap
+breakfast a52q
+TARGET_BUILD_GAPPS=true
+m yaap
