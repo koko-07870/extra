@@ -31,7 +31,7 @@ source build/envsetup.sh
 breakfast a52q && make installclean && mka bacon -j$(nproc --all)
 
 # gofile-upload
-FILE="out/target/product/a52q/PixelOS_a52q*.zip
+FILE="out/target/product/a52q/PixelOS_a52q*.zip"
 
 SERVER=$(curl -s https://api.gofile.io/servers | jq -r '.data.servers[0].name')
 
