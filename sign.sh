@@ -1,7 +1,8 @@
 #!/bin/bash
 
-wget https://raw.githubusercontent.com/306bobby-android/crDroid-build-signed-script/main/create-signed-env.sh
+repo init -u https://github.com/yaap/manifest.git -b fifteen --git-lfs
 
-chmod +x create-signed-env.sh
+git clone https://github.com/koko-07870/local_manifests --depth 1 -b test .repo/local_manifests
 
-./create-signed-env.sh
+# sync
+repo sync -j$(nproc --all) --no-tags --no-clone-bundle --current-branch
