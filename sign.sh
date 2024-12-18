@@ -12,3 +12,14 @@ source build/envsetup.sh
 export TARGET_BUILD_GAPPS=true
 lunch yaap_a52q-user
 m yaap -j $(nproc --all)
+
+# gofile-upload
+FILE="out/target/product/a52q/YAAP*.zip"
+
+SERVER=$(curl -s https://api.gofile.io/servers | jq -r '.data.servers[0].name')
+
+LINK=$(curl -# -F "file=@$FILE" "https://${SERVER}.gofile.io/uploadFile" | jq -r '.data|.downloadPage') 2>&1
+
+echo "$LINK"
+
+echo
