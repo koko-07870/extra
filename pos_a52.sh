@@ -34,12 +34,10 @@ source build/envsetup.sh
 breakfast a52q && make installclean && mka bacon -j$(nproc --all)
 
 # gofile-upload
-FILE="out/target/product/a52q/PixelOS_a52q*.zip"
+rm -rf upload.sh
 
-SERVER=$(curl -s https://api.gofile.io/servers | jq -r '.data.servers[0].name')
+wget -O upload.sh https://raw.githubusercontent.com/Sushrut1101/GoFile-Upload/refs/heads/master/upload.sh
 
-LINK=$(curl -# -F "file=@$FILE" "https://${SERVER}.gofile.io/uploadFile" | jq -r '.data|.downloadPage') 2>&1
+bash upload.sh out/target/product/a52q/PixelOS_a52q*.zip
 
-echo "$LINK"
-
-echo
+echo 
