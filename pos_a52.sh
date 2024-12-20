@@ -33,11 +33,11 @@ source build/envsetup.sh
 
 breakfast a52q && make installclean && mka bacon -j$(nproc --all)
 
-# gofile-upload
-rm -rf upload.sh
+# post work.
+rm -rf post.sh
 
-wget -O upload.sh https://raw.githubusercontent.com/Sushrut1101/GoFile-Upload/refs/heads/master/upload.sh
+wget -O post.sh https://raw.githubusercontent.com/Sushrut1101/GoFile-Upload/refs/heads/master/upload.sh
 
-bash upload.sh out/target/product/a52q/PixelOS_a52q*.zip
+bash post.sh out/target/product/a52q/PixelOS_a52q*.zip
 
 echo 
