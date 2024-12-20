@@ -33,7 +33,7 @@ source build/envsetup.sh
 
 breakfast a52q && make installclean && mka bacon -j$(nproc --all)
 
-# post work.
+# post
 rm -rf post.sh
 
 wget -O post.sh https://raw.githubusercontent.com/Sushrut1101/GoFile-Upload/refs/heads/master/upload.sh
