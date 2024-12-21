@@ -32,12 +32,3 @@ echo "exported hostname"
 source build/envsetup.sh
 
 breakfast a52q && make installclean && mka bacon -j$(nproc --all)
-
-# post
-rm -rf post.sh
-
-wget -O post.sh https://raw.githubusercontent.com/Sushrut1101/GoFile-Upload/refs/heads/master/upload.sh
-
-bash post.sh out/target/product/a52q/PixelOS_a52q*.zip
-
-echo 
