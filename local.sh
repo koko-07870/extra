@@ -21,12 +21,6 @@ git clone https://github.com/koko-07870/local_manifests --depth 1 -b test .repo/
 rm -rf vendor/yaap/signing/keys
 git clone https://github.com/koko-07870/extra -b tmp vendor/yaap/signing/keys
 
-rm -rf vendor/qcom/opensource/power/power.xml
-rm -rf vendor/qcom/opensource/power/Android.mk
-cd vendor/qcom/opensource/power/
-wget -O Android.mk https://raw.githubusercontent.com/koko-07870/extra/refs/heads/spark/Android.mk.txt
-cd ..
-
 # Export
 export BUILD_USERNAME=koko-07870
 export BUILD_HOSTNAME=crave
