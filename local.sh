@@ -7,7 +7,7 @@ rm -rf .repo/local_manifests
 git clone https://github.com/koko-07870/local_manifests --depth 1 -b test .repo/local_manifests
 
 # sync
-repo sync -j$(nproc --all) --no-tags --no-clone-bundle --current-branch
+repo sync -j$(nproc --all) --no-tags --no-clone-bundle --force-sync --current-branch
 
 # keys
 rm -rf vendor/yaap/signing/keys
