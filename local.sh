@@ -15,6 +15,5 @@ git clone https://github.com/koko-07870/extra -b tmp vendor/yaap/signing/keys
 
 # start
 source build/envsetup.sh
-export TARGET_BUILD_GAPPS=true
 lunch yaap_a52q-user
 make installclean && m yaap -j$(nproc --all)
