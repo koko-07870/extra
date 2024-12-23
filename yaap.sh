@@ -1,15 +1,22 @@
 #!/bin/bash
 
+repo init -u https://github.com/yaap/manifest.git -b fifteen --git-lfs
+
 # local_manifests
 rm -rf .repo/local_manifests
 git clone https://github.com/koko-07870/local_manifests --depth 1 -b test .repo/local_manifests
 
 # sync
-repo sync -j$(nproc --all) --no-tags --no-clone-bundle --force-sync --current-branch
+/opt/crave/resync.sh
 
 # keys
 rm -rf vendor/yaap/signing/keys
 git clone https://github.com/koko-07870/extra -b tmp vendor/yaap/signing/keys
+
+# Export
+export BUILD_USERNAME=koko-07870
+export BUILD_HOSTNAME=crave
+echo "exported hostname"
 
 # start
 source build/envsetup.sh
