@@ -2,6 +2,8 @@
 
 rm -rf .repo/local_manifests
 
+repo init -u https://github.com/kawaaii/pixelos-manifest.git -b fifteen-qpr1 --git-lfs
+
 # local_manifests
 git clone https://github.com/koko-07870/local_manifests --depth 1 -b pos-a52 .repo/local_manifests
 
