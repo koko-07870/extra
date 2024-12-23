@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm -rf .repo/local_manifests
+
 repo init -u https://github.com/yaap/manifest.git -b fifteen --git-lfs
 
 # local_manifests
