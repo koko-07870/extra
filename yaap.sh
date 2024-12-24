@@ -29,4 +29,4 @@ echo "exported hostname"
 # start
 source build/envsetup.sh
 lunch yaap_a52q-user
-make installclean && m yaap -j$(nproc --all)
+m installclean && m yaap -j$(nproc --all)
