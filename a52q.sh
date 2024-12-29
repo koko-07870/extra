@@ -17,7 +17,7 @@ rm -rf toolchain.tar.gz
 fi
 rm -rf anykernel
 make O=out ARCH=arm64 vendor/pixelos-a52q_defconfig
-PATH="${PWD}/clang/bin:${PATH}" \
+PATH="${PWD}/../clang/bin:${PATH}" \
 make -j$(nproc --all) O=out \
                       ARCH=arm64 \
                       CC="clang" \
