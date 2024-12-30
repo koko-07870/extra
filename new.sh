@@ -3,8 +3,6 @@
 rm -rf .repo/local_manifests
 rm -rf out/soong/*.glob*
 
-repo init -u https://github.com/kawaaii/pixelos-manifest.git -b fifteen-qpr1 --git-lfs
-
 git clone https://github.com/koko-07870/local_manifests --depth 1 -b pos-a52 .repo/local_manifests
 
 repo sync -c -j66 --force-sync --no-clone-bundle --no-tags --optimized-fetch
