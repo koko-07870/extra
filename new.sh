@@ -9,9 +9,3 @@ repo sync -c -j66 --force-sync --no-clone-bundle --no-tags --optimized-fetch
 
 rm -rf vendor/aosp/signing/keys
 git clone https://github.com/koko-07870/extra -b tmp vendor/aosp/signing/keys
-
-export BUILD_USERNAME=koko-07870
-
-source build/envsetup.sh
-
-breakfast a52q && make installclean && mka bacon -j$(nproc --all)
