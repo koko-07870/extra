@@ -7,4 +7,4 @@ git clone https://github.com/koko-07870/local_manifests --depth 1 -b lineage .re
 repo sync -c -j66 --force-sync --no-clone-bundle --no-tags --optimized-fetch
 
 source build/envsetup.sh
-brunch a52q
+breakfast a52q && mka bacon
