@@ -9,4 +9,4 @@ repo sync -c -j66 --force-sync --no-clone-bundle --no-tags --optimized-fetch
 source build/envsetup.sh
 export USE_CCACHE=0
 
-breakfast a52q && mka bacon
+brunch a52q
