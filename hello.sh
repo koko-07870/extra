@@ -3,13 +3,15 @@
 rm -rf .repo/local_manifests
 rm -rf out/soong/*.glob*
 
+repo init -u https://github.com/kawaaii/pixelos-manifest.git -b fifteen-qpr1 --git-lfs
+
 git clone https://github.com/koko-07870/local_manifests --depth 1 -b lineage .repo/local_manifests
 
 repo sync -c -j66 --force-sync --no-clone-bundle --no-tags --optimized-fetch
 
-rm -rf vendor/yaap/signing/keys
-git clone https://github.com/koko-07870/extra -b tmp vendor/yaap/signing/keys
+rm -rf vendor/aosp/signing/keys
+git clone https://github.com/koko-07870/extra -b tmp vendor/aosp/signing/keys
 
 source build/envsetup.sh
-lunch yaap_a52q-user
-m installclean && m yaap -j$(nproc --all)
+breakfast a52q
+m installclean && mka bacon
