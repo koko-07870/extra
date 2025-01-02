@@ -8,16 +8,16 @@ TANGGAL=$(date +"%Y%m%d-%H")
 export ARCH=arm64
 export KBUILD_BUILD_HOST=linux-build
 export KBUILD_BUILD_USER="koko"
-clangbin=clang/bin/clang
+clangbin=../clang/bin/clang
 if ! [ -a $clangbin ]; then
-wget -O toolchain.tar.gz https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/main/clang-r530567.tar.gz
-mkdir -p ${PWD}/clang
-tar -xzf toolchain.tar.gz -C ${PWD}/clang
+wget -O toolchain.tar.gz https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/main/clang-r522817.tar.gz
+mkdir -p ${PWD}/../clang
+tar -xzf toolchain.tar.gz -C ${PWD}/../clang
 rm -rf toolchain.tar.gz
 fi
 rm -rf anykernel
 make O=out ARCH=arm64 vendor/pixelos-a72q_defconfig
-PATH="${PWD}/clang/bin:${PATH}" \
+PATH="${PWD}/../clang/bin:${PATH}" \
 make -j$(nproc --all) O=out \
                       ARCH=arm64 \
                       CC="clang" \
@@ -42,7 +42,7 @@ echo -e " Kernel Compile Successful"
 git clone --depth=1 https://github.com/koko-07870/AnyKernel3.git -b master anykernel
 cp out/arch/arm64/boot/Image.gz anykernel
 cd anykernel
-zip -r9 Spark-2.0-a72q-${TANGGAL}.zip *
+zip -r9 Spark-2.1-a72q-${TANGGAL}.zip *
 cd ../
 fi
 }
