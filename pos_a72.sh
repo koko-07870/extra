@@ -3,7 +3,7 @@
 rm -rf .repo/local_manifests
 rm -rf out/soong/*.glob*
 
-repo init -u https://github.com/kawaaii/pixelos-manifest.git -b fifteen-qpr1 --git-lfs
+repo init -u https://github.com/PixelOS-AOSP/manifest.git -b fifteen-qpr1 --git-lfs
 
 git clone https://github.com/koko-07870/local_manifests --depth 1 -b pos-a72 .repo/local_manifests
 
