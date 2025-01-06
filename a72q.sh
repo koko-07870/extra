@@ -1,9 +1,12 @@
 #!/bin/bash
-function compile()
-{
+
+SECONDS=0 # builtin bash timer
+
 source ~/.bashrc && source ~/.profile
+
 export LC_ALL=C && export USE_CCACHE=1
 ccache -M 20G
+
 TANGGAL=$(date +"%Y%m%d-%H")
 export ARCH=arm64
 export KBUILD_BUILD_HOST=linux-build
@@ -15,7 +18,6 @@ mkdir -p ${PWD}/../clang
 tar -xzf toolchain.tar.gz -C ${PWD}/../clang
 rm -rf toolchain.tar.gz
 fi
-rm -rf anykernel
 make O=out ARCH=arm64 vendor/pixelos-a72q_defconfig
 PATH="${PWD}/../clang/bin:${PATH}" \
 make -j$(nproc --all) O=out \
@@ -30,21 +32,18 @@ make -j$(nproc --all) O=out \
                       CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
                       LD=ld.lld \
                       CONFIG_NO_ERROR_ON_MISMATCH=y
-}
-function zupload()
-{
+
 zimage=out/arch/arm64/boot/Image.gz
 if ! [ -a $zimage ];
 then
 echo  " Failed To Compile Kernel"
 else
-echo -e " Kernel Compile Successful"
-git clone --depth=1 https://github.com/koko-07870/AnyKernel3.git -b master anykernel
-cp out/arch/arm64/boot/Image.gz anykernel
-cd anykernel
-zip -r9 Spark-2.1-a72q-${TANGGAL}.zip *
-cd ../
+echo -e "\nKernel compiled successfully! Zipping up...\n"
+git clone --depth=1 https://github.com/koko-07870/AnyKernel3.git -b master AnyKernel3
+cp out/arch/arm64/boot/Image.gz AnyKernel3
+cd AnyKernel3
+zip -r9 ../Spark-2.1-a72q-${TANGGAL}.zip *
+cd ..
+rm -rf AnyKernel3
+echo -e "\nCompleted in $((SECONDS / 60)) minute(s) and $((SECONDS % 60)) second(s) !"
 fi
-}
-compile
-zupload
