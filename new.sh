@@ -15,4 +15,5 @@ export BUILD_USERNAME=koko-07870
 
 source build/envsetup.sh
 
+export TEMPORARY_DISABLE_PATH_RESTRICTIONS=true
 breakfast a52q && make installclean && mka bacon -j$(nproc --all)
