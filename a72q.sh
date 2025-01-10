@@ -18,7 +18,7 @@ mkdir -p ${PWD}/../clang
 tar -xzf toolchain.tar.gz -C ${PWD}/../clang
 rm -rf toolchain.tar.gz
 fi
-make O=out ARCH=arm64 vendor/pixelos-a72q_defconfig
+make O=out ARCH=arm64 vendor/pixelos-a72q_defconfig vendor/debugfs.config
 PATH="${PWD}/../clang/bin:${PATH}" \
 make -j$(nproc --all) O=out \
                       ARCH=arm64 \
