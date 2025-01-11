@@ -5,7 +5,7 @@ rm -rf out/soong/*.glob*
 
 repo init -u https://github.com/PixelOS-AOSP/manifest.git -b fifteen --git-lfs
 
-git clone https://github.com/koko-07870/local_manifests --depth 1 -b pos-a52 .repo/local_manifests
+git clone https://github.com/koko-07870/local_manifests --depth 1 -b pos .repo/local_manifests
 
 /opt/crave/resync.sh
 
@@ -19,3 +19,4 @@ echo "exported hostname"
 source build/envsetup.sh
 
 breakfast a52q && make installclean && mka bacon -j$(nproc --all)
+# breakfast a72q && make installclean && mka bacon -j$(nproc --all)
