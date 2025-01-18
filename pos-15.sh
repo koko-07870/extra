@@ -18,4 +18,3 @@ echo "exported hostname"
 source build/envsetup.sh
 
 breakfast a52q && make installclean && mka bacon -j$(nproc --all)
-# breakfast a72q && make installclean && mka bacon -j$(nproc --all)
