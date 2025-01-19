@@ -12,6 +12,7 @@ git clone https://github.com/koko-07870/extra -b tmp vendor/aosp/signing/keys
 export BUILD_USERNAME=koko-07870
 export BUILD_HOSTNAME=crave
 echo "exported hostname"
+
 source build/envsetup.sh
 
 breakfast a52q && make installclean && mka bacon -j$(nproc --all)
