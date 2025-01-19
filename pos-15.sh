@@ -1,6 +1,7 @@
 #!/bin/bash
 
 rm -rf .repo/local_manifests
+
 repo init -u https://github.com/PixelOS-AOSP/manifest.git -b fifteen --git-lfs
 
 git clone https://github.com/koko-07870/local_manifests --depth 1 -b pos .repo/local_manifests
