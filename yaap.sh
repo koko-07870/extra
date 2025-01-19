@@ -17,6 +17,8 @@ git clone https://github.com/yaap/packages_apps_FastCharge -b fifteen packages/a
 rm -rf hardware/qcom-caf/common
 git clone https://github.com/LineageOS/android_hardware_qcom-caf_common -b lineage-22.1 hardware/qcom-caf/common
 
+rm -rf hardware/qcom/display
+git clone https://github.com/LineageOS/android_hardware_qcom_display -b lineage-22.1-caf-sm8150 hardware/qcom/display
 export BUILD_USERNAME=koko-07870
 export BUILD_HOSTNAME=crave
 echo "exported hostname"
