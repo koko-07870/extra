@@ -9,8 +9,10 @@ git clone https://github.com/koko-07870/local_manifests --depth 1 -b pos .repo/l
 /opt/crave/resync.sh
 
 rm -rf vendor/aosp/signing/keys
-rm -rf .repo/local_manifests
-git clone https://github.com/koko-07870/local_manifests -b tmp .repo/local_manifests
+
+cd .repo/local_manifests
+wget -O tmp.xml https://raw.githubusercontent.com/koko-07870/local_manifests/refs/heads/tmp/tmp.xml
+cd -
 repo sync extra
 
 export BUILD_USERNAME=koko-07870
